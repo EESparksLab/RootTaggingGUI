@@ -18,5 +18,6 @@ Author(s): 		William Cantera (wcantera@udel.edu)
 
 # Imports
 import tagging
+import tagging.tagger_controller
 
 tagging.tagger_controller.start()

@@ -18,10 +18,10 @@ Author(s): 		William Cantera (wcantera@udel.edu)
 """
 
 # Imports
-from Tkinter import * # Keep at top
+from tkinter import * # Keep at top
 from PIL import Image, ImageTk, ImageDraw
 from imutils import paths
-from ttk import Style
+from tkinter.ttk import Style
 from collections import defaultdict
 
 
@@ -346,7 +346,7 @@ class Tagger_View(Frame):
         # Gets an image compatible with Tkinter
         image = Image.open(self.image_list[self.count]).convert("RGBA")
         img_w, img_h = image.size
-        new_size = (img_w/2, img_h/2) # Images are very large
+        new_size = (int(img_w/2), int(img_h/2)) # Images are very large
         image = image.resize(new_size)
         if self.should_resize == True: # Handle displaying the image on a small screen
             w, h = image.size

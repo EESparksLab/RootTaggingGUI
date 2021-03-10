@@ -1,3 +1,3 @@
-import tagger_controller
-import tagger_model
-import tagger_view
+#import tagger_controller
+#import tagger_model
+#import tagger_view

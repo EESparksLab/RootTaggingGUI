@@ -19,9 +19,9 @@ Author(s): 		William Cantera (wcantera@udel.edu)
 
 
 # Imports
-from Tkinter import *
-import tagger_model as m
-import tagger_view as v
+from tkinter import *
+import tagging.tagger_model as m
+import tagging.tagger_view as v
 import csv
 
 
