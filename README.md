@@ -6,4 +6,4 @@ Hostetler AN, Erndwein L, Reneau JW, Cantera W, Stager A, Tanner HG, Cook DD and
 “Brace root phenotypes predict root lodging susceptibility and the contribution to anchorage in maize” bioRxiv, 2021. 
 https://doi.org/10.1101/2021.05.12.443923
 
-A user video can be found on our lab YouTube Channel: https://youtu.be/beqzgjBh1VE
+A user video can be found on our lab YouTube Channel: https://youtu.be/kbDPeC8ewCQ
