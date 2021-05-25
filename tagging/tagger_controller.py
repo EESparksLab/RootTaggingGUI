@@ -138,11 +138,13 @@ class Tagger_Controller(object):
             if not self.hasLabels:
                 writer.writerow(["Plant ID", "  Pixels/Label Height", "  W1 roots", "  W2 roots", "  W3 roots", "  W4 roots", "    Left root Width", "  Stalk Width", "  Root Height Left", "  Root Len Left", "  Root ht Right", "    Root Len Right"])
                 self.hasLabels = True
-            a_or_b = "B"
-            if self.view.count % 2 == 0:
-                a_or_b = "A"
+           # a_or_b = "B"
+            #if self.view.count % 2 == 0:
+             #   a_or_b = "A"
+
             filename = self.view.image_list[self.view.count] #str(self.view.count) + a_or_b
-            plant_ID = filename.split("/")[1].split("_")[0] + str("_") + filename.split("/")[1].split("_")[2].split(".")[0]
+            plant_ID = filename
+            #plant_ID = filename.split("/")[1].split("_")[0] + str("_") + filename.split("/")[1].split("_")[2].split(".")[0]
             image_scale = "          " + str(round(self.pixel_data_list[0], 3)) # First get image scale
             braceroot1_count = "                " + str(self.view.braceroot1_entry_box.get()) # Gets the input from the entry
             braceroot2_count = "          " + str(self.view.braceroot2_entry_box.get()) # Gets the input from the entry

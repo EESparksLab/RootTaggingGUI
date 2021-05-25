@@ -352,9 +352,9 @@ class Tagger_View(Frame):
             w, h = image.size
             even_smaller = (int(w/1.3), int(h/1.3))
             image = image.resize(even_smaller)
-        image = image.rotate(-90) # For fixing python auto rotating the image when loaded.
+       # image = image.rotate(-90) # For fixing python auto rotating the image when loaded.
         self.display_image_reference = ImageTk.PhotoImage(image)
-        self.display_image = self.canvas.create_image(self.width/2, self.height/2, image = self.display_image_reference, anchor = CENTER)
+        self.display_image = self.canvas.create_image(int(self.width/2), int(self.height/2), image = self.display_image_reference, anchor = CENTER)
 
 
     """
@@ -394,20 +394,21 @@ class Tagger_View(Frame):
             y_mod1 -= 50
             y_mod2 -= 50
         self.braceroot_text_box = self.canvas.create_text(self.width/2-x_mod1, self.height/2+y_mod1, fill = "lawn green", font = "Times 25 bold", text = "Enter # of brace-roots\nlowest level goes in\nlowest input box.")
-        a_or_b = "ERROR"
-        plant_count = "ERROR"
-        if self.count % 2 == 0:
-            if should_increment:
-                self.plant_count += 1
-        if self.count % 2 == 0:
-            a_or_b = "A"
-        else:
-            a_or_b = "B"
-        print(self.count)
-        print(self.image_list)
+        #a_or_b = "ERROR"
+       # plant_count = "ERROR"
+       # if self.count % 2 == 0:
+        #    if should_increment:
+       #        self.plant_count += 1
+       # if self.count % 2 == 0:
+       #     a_or_b = "A"
+       # else:
+       #     a_or_b = "B"
+      #  print(self.count)
+       # print(self.image_list)
         image_name = self.image_list[self.count]
-        plant_name = image_name.split("/")[1].split("_")[0] + str("_") + image_name.split("/")[1].split("_")[2].split(".")[0]
-        self.ab_text = self.canvas.create_text(self.width/2-x_mod2, self.height/2-y_mod2, fill = "lawn green", font = "Times 30 bold", text = "Plant: %s, Side: %s" % (plant_name, a_or_b))
+        plant_name = image_name
+        #plant_name = image_name.split("/")[1].split("_")[0] + str("_") + image_name.split("/")[1].split("_")[2].split(".")[0]
+        #self.ab_text = self.canvas.create_text(self.width/2-x_mod2, self.height/2-y_mod2, fill = "lawn green", font = "Times 30 bold", text = "Plant: %s, Side: %s" % (plant_name, a_or_b))
 
 
 
