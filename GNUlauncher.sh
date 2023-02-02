@@ -8,6 +8,7 @@ import tagging
 import tagging.tagger_controller
 tagging.tagger_controller.start()
 EOF
-)#BASH Variable to pass to python
+)
+#BASH Variable to pass to python
 
 python3 -c "$PYWRAP"  #Executes the python wrapper
