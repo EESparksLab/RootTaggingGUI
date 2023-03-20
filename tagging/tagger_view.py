@@ -91,6 +91,7 @@ class Tagger_View(Frame):
         self.braceroot2_entry_box = Entry(self.canvas)
         self.braceroot3_entry_box = Entry(self.canvas)
         self.braceroot4_entry_box = Entry(self.canvas)
+        self.plant_id_entry_box = Entry(self.canvas)
         self.plant_count = 0
         self.oval_dict = defaultdict(list)
         self.circle_dict = defaultdict(list)
@@ -121,11 +122,11 @@ class Tagger_View(Frame):
     def update_mode(self):
         self.canvas.delete(self.mode_textbox)
         size = "Times 24 bold"
-        width = 500
-        height = 200
+        width = 300
+        height = -100
         if "draw_triangles" in self.mode_text:
             size = "Times 12 bold"
-            width = 700
+            width = 300
         if self.should_resize:
             width += 200
             height += 200
@@ -249,13 +250,13 @@ class Tagger_View(Frame):
     Produces: Nothing
     """
     def draw_data_labels(self):
-        x = self.width/2
-        y = self.height/2
+        x = self.width/2 - 800
+        y = self.height/2 + 200
         x1 = 1100
         x2 = 1150
         x3 = 1500
-        y1 = 900
-        y2 = 600
+        y1 = 800
+        y2 = 700
         if self.should_resize:
             x1 -= 200
             x2 -= 200
@@ -276,8 +277,8 @@ class Tagger_View(Frame):
     Produces: Nothing
     """
     def draw_data(self, data):
-        x_mod1 = 1100
-        y_mod1 = 800
+        x_mod1 = 300
+        y_mod1 = 550
         if self.should_resize:
             x_mod1 -= 200
             y_mod1 -= 200
@@ -303,7 +304,7 @@ class Tagger_View(Frame):
             self.data_list.append(temp)
             if i % 2:
                 x -= 400
-                y += 300
+                y += 100
             else:
                 x += 400
             i += 1
@@ -364,7 +365,7 @@ class Tagger_View(Frame):
     Produces: Nothing
     """
     def make_input_boxes(self):
-        x_mod1 = 1400
+        x_mod1 = 700
         y_mod1 = 200
         y_mod2 = 100
         if self.should_resize:
@@ -375,7 +376,7 @@ class Tagger_View(Frame):
         self.braceroot3_window = self.canvas.create_window(self.width/2-x_mod1, self.height/2-y_mod2, window = self.braceroot3_entry_box)
         self.braceroot2_window = self.canvas.create_window(self.width/2-x_mod1, self.height/2, window = self.braceroot2_entry_box)
         self.braceroot1_window = self.canvas.create_window(self.width/2-x_mod1, self.height/2+y_mod2, window = self.braceroot1_entry_box)
-
+        self.plant_id_window = self.canvas.create_window(self.width/2-x_mod1, self.height/2-y_mod1-100, window = self.plant_id_entry_box)
 
     """
     draw_text
@@ -384,9 +385,9 @@ class Tagger_View(Frame):
     Produces: Nothing
     """
     def draw_text(self, should_increment):
-        x_mod1 = 1370
+        x_mod1 = 600
         y_mod1 = 250
-        x_mod2 = 1425
+        x_mod2 = 700
         y_mod2 = 300
         if self.should_resize:
             x_mod1 -= 200

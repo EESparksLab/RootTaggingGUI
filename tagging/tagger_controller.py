@@ -143,7 +143,8 @@ class Tagger_Controller(object):
              #   a_or_b = "A"
 
             filename = self.view.image_list[self.view.count] #str(self.view.count) + a_or_b
-            plant_ID = filename
+            #plant_ID = filename
+            plant_ID = "                " + str(self.view.plant_id_entry_box.get())
             #plant_ID = filename.split("/")[1].split("_")[0] + str("_") + filename.split("/")[1].split("_")[2].split(".")[0]
             image_scale = "          " + str(round(self.pixel_data_list[0], 3)) # First get image scale
             braceroot1_count = "                " + str(self.view.braceroot1_entry_box.get()) # Gets the input from the entry

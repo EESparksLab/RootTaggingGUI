@@ -1,0 +1,4 @@
+python_environment/
+stalk_images/
+pixel_data.csv
+*.pyc
