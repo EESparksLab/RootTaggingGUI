@@ -88,10 +88,15 @@ class Tagger_View(Frame):
         self.display_image = None
         self.display_image_reference = None
         self.braceroot1_entry_box = Entry(self.canvas)
+        self.braceroot1_entry_box.insert(0,"whrl 1")
         self.braceroot2_entry_box = Entry(self.canvas)
+        self.braceroot2_entry_box.insert(0,"whrl 2")
         self.braceroot3_entry_box = Entry(self.canvas)
+        self.braceroot3_entry_box.insert(0,"whrl 3")
         self.braceroot4_entry_box = Entry(self.canvas)
+        self.braceroot4_entry_box.insert(0,"whrl 4")
         self.plant_id_entry_box = Entry(self.canvas)
+        self.plant_id_entry_box.insert(0,"PlantID")
         self.plant_count = 0
         self.oval_dict = defaultdict(list)
         self.circle_dict = defaultdict(list)
@@ -354,6 +359,24 @@ class Tagger_View(Frame):
             even_smaller = (int(w/1.3), int(h/1.3))
             image = image.resize(even_smaller)
        # image = image.rotate(-90) # For fixing python auto rotating the image when loaded.
+        self.display_image_reference = ImageTk.PhotoImage(image)
+        self.display_image = self.canvas.create_image(int(self.width/2), int(self.height/2), image = self.display_image_reference, anchor = CENTER)
+
+    def rotate_image(self):
+        print("rotate was called")
+        image = Image.open(self.image_list[self.count]).convert("RGBA")
+        img_w, img_h = image.size
+        new_size = (int(img_w/2), int(img_h/2)) # Images are very large
+        image = image.resize(new_size)
+        if self.should_resize == True: # Handle displaying the image on a small screen
+            w, h = image.size
+            even_smaller = (int(w/1.3), int(h/1.3))
+            image = image.resize(even_smaller)
+
+
+        image = image.rotate(90) # For fixing python auto rotating the image when loaded.
+
+
         self.display_image_reference = ImageTk.PhotoImage(image)
         self.display_image = self.canvas.create_image(int(self.width/2), int(self.height/2), image = self.display_image_reference, anchor = CENTER)
 

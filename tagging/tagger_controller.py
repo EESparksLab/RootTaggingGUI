@@ -55,12 +55,15 @@ class Tagger_Controller(object):
         self.root.bind("<Button 1>", self.on_click_left) # Bind Left Mouse Button
         self.root.bind("<r>", self.reset_data)
         self.root.bind("<Return>", self.switch_mode)
+        self.root.bind("<l>", self.rotate_image_call)
         self.pixel_data_list = []
         self.mode = STEP_LIST[0]
         self.view.mode_text = self.mode
         self.mode_index = 0
         self.hasLabels = False
 
+    def rotate_image_call(self, event):
+        self.view.rotate_image()
 
     def switch_mode(self, event):
         if self.view.has_changed == True:
