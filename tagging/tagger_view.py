@@ -380,6 +380,79 @@ class Tagger_View(Frame):
         self.display_image_reference = ImageTk.PhotoImage(image)
         self.display_image = self.canvas.create_image(int(self.width/2), int(self.height/2), image = self.display_image_reference, anchor = CENTER)
 
+    def view_finder(self):
+        print("vf was called")
+        global rotated_bool
+        rotated_bool = False
+        vf_window = Toplevel(self.root)
+        vf_canvas = Canvas(vf_window, bg="blue")
+        global image
+        image = Image.open(self.image_list[self.count]).convert("RGBA")
+        img_w, img_h = image.size
+        new_size = (int(img_w/2), int(img_h/2)) # Images are very large
+        image = image.resize(new_size)
+
+        photo = ImageTk.PhotoImage(image)
+        vf_canvas.create_image(0,0,image=photo, anchor="nw")
+        vf_canvas.image = photo
+        vf_canvas.pack(fill="both", expand=True)
+
+
+        def rotate_image(event):
+            global rotated_bool
+            rotated_bool = True
+            image = Image.open(self.image_list[self.count]).convert("RGBA")
+            image = image.rotate(90)
+            new_size = (int(img_w/2), int(img_h/2)) # Images are very large
+            image = image.resize(new_size)
+            photo = ImageTk.PhotoImage(image)
+            vf_canvas.create_image(0,0,image=photo, anchor="nw")
+            vf_canvas.image = photo
+
+
+
+        def on_mouse_down(event):
+            global start_x, start_y
+            start_x = vf_canvas.canvasx(event.x)
+            start_y = vf_canvas.canvasy(event.y)
+            vf_canvas.create_rectangle(start_x, start_y, start_x, start_y, outline="red", tags="bbox")
+
+        def on_mouse_move(event):
+            curX = vf_canvas.canvasx(event.x)
+            curY = vf_canvas.canvasy(event.y)
+            vf_canvas.coords("bbox", start_x, start_y, curX, curY)
+            global crop_box_x0, crop_box_y0, crop_box_x1, crop_box_y1
+            crop_box_x0 = start_x
+            crop_box_y0 = start_y
+            crop_box_x1 = curX
+            crop_box_y1 = curY
+
+        def on_mouse_up(event):
+            pass
+
+        def capture(event):
+
+            print("capture called",crop_box_x0,crop_box_y0,crop_box_x1,crop_box_y1,rotated_bool)
+            image = Image.open(self.image_list[self.count]).convert("RGBA")
+
+
+            new_size = (int(img_w/2), int(img_h/2)) # Images are very large
+            image = image.resize(new_size)
+            if(rotated_bool):
+                image = image.rotate(90)
+            cropped = image.crop((crop_box_x0,crop_box_y0,crop_box_x1,crop_box_y1))
+
+            self.display_image_reference = ImageTk.PhotoImage(cropped)
+            self.display_image = self.canvas.create_image(int(self.width/2), int(self.height/2), image = self.display_image_reference, anchor = CENTER)
+            vf_window.destroy()
+
+        vf_canvas.bind("<Button-1>", on_mouse_down)
+        vf_canvas.bind("<B1-Motion>", on_mouse_move)
+        vf_canvas.bind("<ButtonRelease-1>", on_mouse_up)
+        vf_canvas.bind("<p>", capture)
+        vf_canvas.bind("<l>", rotate_image)
+        vf_canvas.focus_set()
+
 
     """
     make_input_boxes, makes the input boxes for inputting the number of braceroots.

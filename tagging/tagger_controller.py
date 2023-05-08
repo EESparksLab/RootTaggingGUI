@@ -56,6 +56,7 @@ class Tagger_Controller(object):
         self.root.bind("<r>", self.reset_data)
         self.root.bind("<Return>", self.switch_mode)
         self.root.bind("<l>", self.rotate_image_call)
+        self.root.bind("<v>",self.view_finder_call)
         self.pixel_data_list = []
         self.mode = STEP_LIST[0]
         self.view.mode_text = self.mode
@@ -64,6 +65,8 @@ class Tagger_Controller(object):
 
     def rotate_image_call(self, event):
         self.view.rotate_image()
+    def view_finder_call(self,event):
+        self.view.view_finder()
 
     def switch_mode(self, event):
         if self.view.has_changed == True:
