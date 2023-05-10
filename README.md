@@ -29,3 +29,56 @@ Now you can use the app by running
 ```bat
 WinLauncher.bat
 ```
+
+## User Guide
+### Import photos to tag
+Copy & paste the images into RootTaggingGui/stalk_images
+
+### Start RootTaggingGUI
+On Linux & MacOS
+```sh
+./GNUlauncher.sh
+```
+On Windows
+```bat
+WinLauncher.bat
+```
+### Press "start" to get to the tagging window
+Features & keybinds of the tagging window include:
+* "R" key resets all markers & entry boxes
+* "L" key will redraw the image, rotated 90 degrees
+* "V" key will open the viewfinder
+
+> Using the Viewfinder
+note: you may need to expand the viewfinder window to see the full image
+Hit "L" top rotate 90 degrees, if needed
+Click & Drag to draw a bounding box around the subject
+Hit "P" to push the new image back to the tagging window
+
+### Place scale markers
+The image should have a reference popsicle stick that is a known width. Right-click on either edge
+of the popsicle stick to place a marker (little red dot). After placing markers on both sides of the
+popsicle stick the pythagoeran distance formula will be used to calculate the distance in pixels
+between the two markers.
+Hit "Enter" to continue to the next mode
+
+### Brace Root Count
+Manually count the number of brace roots emerging from each whorl and enter that value into the
+entry boxes. The boxes are organized such that the lowest whorl is the lowest box.
+
+Hit "Enter" to continue to the next mode
+
+### Stalk width & brace root width
+This operation is largly the same as placeing the scale markers
+Place markers on either side of the stalk
+Hit "Enter"
+Place markers on either side of the right-most brace root
+>Process root pixel data seems to make the assumption that it is the right-most brace root. I am partial to this for consistency purposes
+
+Hit "Enter" to proceed to the next mode
+
+### Triangles
+With mouse-right-click, draw a triangle that extends from the emerging point of the top brace root, down to the ground, and out to the point where the brace roots meet the ground.
+Do this on both sides of the stalk.
+Hit "Enter" to Finish tagging, there should be an indicator that the tagging process is complete and then you can click the "Next" button to move on.
+
