@@ -1,9 +1,9 @@
 @echo off
 rem = """
-rem Do any custom setup like setting environment variables etc if required here ...
+rem Setting custom environment variable
 
 call python_environment\Scripts\activate.bat
-
+rem calls the Python interpreter, tells it to skip the first line of the script, and passes it the full path of the current script as well as any command-line arguments.
 call python -x "%~f0" %*
 goto endofPython """
 

@@ -1,52 +1,28 @@
+'''
+This Python script processes data from multiple CSV files containing information about plants. The data includes the plant ID, the number of roots per whorl, the width of the leftmost root, the width of the stalk, the height and width of the roots on the left and right sides, and other measurements.
+
+The script defines a function is_header that checks if a row in the CSV file is a header row. If it is, the row is skipped.
+
+The script then iterates over each file in the data_files list and opens it using the csv module. For each row in the file, it checks if it is a header row using the is_header function. If it is not a header row, it processes the data in the row.
+
+The script calculates various values such as the pixels per inch (ppi), the number of whorls (num_whorls), and the width of the spread (spread_width) using the data in the row. It also calculates the angle of the roots on the left and right sides in degrees (root_angledeg_left and root_angledeg_right) using the math.atan function.
+
+The calculated values are stored in a list (data_list) and added to a dictionary (plant_dict) with the plant ID as the key.
+
+After all rows in all files have been processed, the script sorts the keys of plant_dict and appends their corresponding values to a list (plant_data). It then writes this data to a new CSV file called processed_root_data.csv.
+
+The script also prints some information to the console such as the number of plots processed, the number of image data saved, and other statistics.
+'''
+
 import csv
 import math
 import numpy as np
 
 data_files = ["1259-1265.csv",
-              "1266-1276.csv",
-              "1277-1280_1282.csv",
-              "1283-1285.csv",
-              "1286_1342.csv",
-              "1287-1291_1317-1323.csv",
-              "1292-1294.csv",
-              "1295-1299.csv",
-              "1300-1304.csv",
-              "1305-1308.csv",
-              "1309-1316.csv",
-              "1324-1328.csv",
-              "1329-1334.csv",
-              #"1330.csv",
-              "1331-1332.csv",
-              "1333-1336.csv",
-              "1337-1341.csv",
-              #"1342.csv", MISSING?
-              "1343-1345.csv",
-              "1346-1347.csv",
-              "1348-1350.csv",
-              "1351-1354.csv",
-              "1355-1358.csv",
-              "1359-1364.csv",
-              "1365-1369.csv",
-              "1370-1373.csv",
-              "1373-1377.csv",
-              "1379-1384.csv",
-              "1385-1394.csv",
-              "1395-1404.csv",
-              "1405-1409.csv",
-              "1410-1417.csv",
-              "1415-1417_1431_1434.csv",
-              "1418_1429-1431_1433.csv",
-              "1419-1421.csv",
-              "1422-1424.csv",
-              "1425-1428.csv",
-              "1435-1444.csv",
-              #"1436.csv",
-              #"1437-1438.csv",
-              #"1439.csv",
+              "1277-1280_1282.csv"
              ]
 
-#data_files = ["1277-1280_1282.csv",
-#             ]
+
 
 def is_header(curr_row):
     if curr_row[0] == 'Plant ID':
