@@ -103,6 +103,7 @@ class Tagger_View(Frame):
         self.mode_text = None
         self.mode_textbox = None
         self.has_started = False
+        self.rotation_factor = 0
         self.bind_events()
         self.make_intro_screen()
 
@@ -364,6 +365,7 @@ class Tagger_View(Frame):
 
     def rotate_image(self):
         print("rotate was called")
+        self.rotation_factor += 1
         image = Image.open(self.image_list[self.count]).convert("RGBA")
         img_w, img_h = image.size
         new_size = (int(img_w/2), int(img_h/2)) # Images are very large
@@ -374,7 +376,7 @@ class Tagger_View(Frame):
             image = image.resize(even_smaller)
 
 
-        image = image.rotate(90) # For fixing python auto rotating the image when loaded.
+        image = image.rotate(self.rotation_factor * 90)
 
 
         self.display_image_reference = ImageTk.PhotoImage(image)
@@ -382,8 +384,8 @@ class Tagger_View(Frame):
 
     def view_finder(self):
         print("vf was called")
-        global rotated_bool
-        rotated_bool = False
+        global vf_rotation_factor
+        vf_rotation_factor = 0
         vf_window = Toplevel(self.root)
         vf_canvas = Canvas(vf_window, bg="blue")
         global image
@@ -399,10 +401,10 @@ class Tagger_View(Frame):
 
 
         def rotate_image(event):
-            global rotated_bool
-            rotated_bool = True
+            global vf_rotation_factor
+            vf_rotation_factor += 1
             image = Image.open(self.image_list[self.count]).convert("RGBA")
-            image = image.rotate(90)
+            image = image.rotate(vf_rotation_factor*90)
             new_size = (int(img_w/2), int(img_h/2)) # Images are very large
             image = image.resize(new_size)
             photo = ImageTk.PhotoImage(image)
@@ -432,14 +434,14 @@ class Tagger_View(Frame):
 
         def capture(event):
 
-            print("capture called",crop_box_x0,crop_box_y0,crop_box_x1,crop_box_y1,rotated_bool)
+            print("capture called",crop_box_x0,crop_box_y0,crop_box_x1,crop_box_y1,vf_rotation_factor)
             image = Image.open(self.image_list[self.count]).convert("RGBA")
 
 
             new_size = (int(img_w/2), int(img_h/2)) # Images are very large
             image = image.resize(new_size)
-            if(rotated_bool):
-                image = image.rotate(90)
+            if(vf_rotation_factor):
+                image = image.rotate(vf_rotation_factor * 90)
             cropped = image.crop((crop_box_x0,crop_box_y0,crop_box_x1,crop_box_y1))
 
             self.display_image_reference = ImageTk.PhotoImage(cropped)

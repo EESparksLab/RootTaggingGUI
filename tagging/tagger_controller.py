@@ -102,6 +102,7 @@ class Tagger_Controller(object):
         self.view.update(False)
         self.view.destroy_circles()
         self.view.has_changed = True
+        self.view.rotation_factor = 0
 
 
 

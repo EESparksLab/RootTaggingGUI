@@ -33,7 +33,7 @@ This class handles all of the logic in the model view controller scheme
 
     METHODS:
         - __init__: Constructor
-    
+
 """
 class Tagger_Model():
     LABEL_HEIGHT = 10 # Centimeters
@@ -47,13 +47,13 @@ class Tagger_Model():
         self.braceroot_count = 0
         self.image_paths = [ img for img in paths.list_images("stalk_images") ]
         self.sort_paths()
-    
+
 
     def sort_paths(self):
         temp = []
         for file_name in self.image_paths:
             split_name = file_name #
-        
+
         #    curr_index = ''.join(x for x in split_name[3] if x.isdigit()) # Analyzes the filename after the first number
         #    a_or_b = re.search("[AB]", split_name[3]).group()
         #    temp.append([int(curr_index), a_or_b, file_name])
@@ -63,10 +63,10 @@ class Tagger_Model():
        #     if i % 2 == 0 and "B" in temp[i]:
          #       temp2 = temp[i]
        #         temp[i] = temp[i+1]
-        #        temp[i+1] = temp2        
-     #   self.image_paths *= 0 # Clear the plant_directories list 
-     #   self.image_paths = [ paths[2] for paths in temp ] # Dirs[1] is the sorted pathname, I no longer need the index 
-    
+        #        temp[i+1] = temp2
+     #   self.image_paths *= 0 # Clear the plant_directories list
+     #   self.image_paths = [ paths[2] for paths in temp ] # Dirs[1] is the sorted pathname, I no longer need the index
+
 
     """
     get_pixel_distance, finds the distance in pixels between two coordinates, presumably drawn by the user
@@ -81,5 +81,5 @@ class Tagger_Model():
         y1 = coords[len(coords)-1][1]
         # Distance formula, returns distance in pixels
         return math.sqrt(math.pow(x0 - x1, 2) + math.pow(y0 - y1, 2))
-        
- 
+
+
