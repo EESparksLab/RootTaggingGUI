@@ -168,7 +168,7 @@ class Tagger_View(Frame):
             self.canvas.move(self.braceroot3_window, width_diff, height_diff)
             self.canvas.move(self.braceroot4_window, width_diff, height_diff)
             self.canvas.move(self.braceroot_text_box, width_diff, height_diff)
-            self.canvas.move(self.ab_text, width_diff, height_diff)
+            #self.canvas.move(self.ab_text, width_diff, height_diff)
             self.canvas.move(self.root_width_text, width_diff, height_diff)
             self.canvas.move(self.scale_text, width_diff, height_diff)
             self.canvas.move(self.stalk_width_text, width_diff, height_diff)
