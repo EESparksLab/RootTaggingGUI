@@ -185,8 +185,8 @@ class Tagger_View(Frame):
     """
     def make_intro_screen(self):
         self.intro_text = self.canvas.create_text(self.width/2, (self.height/2), fill = TRIC_RED, font = "Times 20 bold", text = "\tPlease use fullscreen\n\n\nClick to draw circles\n, place them according to the mode you are in.\nhit the enter key to change modes.\nyou are done with a plant when the text\n'done, click next' appears.\nHit 'r' to reset the progress\nmade for the current plant..")
-        start_button = start_button = Button(text = "Start", command = self.initialize_screen)
-        self.start_button = self.canvas.create_window(self.width/2, self.height-150, window = start_button)
+        start_button = Button(text = "Start", command = self.initialize_screen)
+        self.start_button = self.canvas.create_window(self.width/2, self.height-300, window = start_button)
 
 
 
@@ -381,6 +381,9 @@ class Tagger_View(Frame):
 
         self.display_image_reference = ImageTk.PhotoImage(image)
         self.display_image = self.canvas.create_image(int(self.width/2), int(self.height/2), image = self.display_image_reference, anchor = CENTER)
+        self.draw_data_labels()
+        self.update_mode()
+        self.draw_text(False)
 
     def view_finder(self):
         print("vf was called")
@@ -446,6 +449,9 @@ class Tagger_View(Frame):
 
             self.display_image_reference = ImageTk.PhotoImage(cropped)
             self.display_image = self.canvas.create_image(int(self.width/2), int(self.height/2), image = self.display_image_reference, anchor = CENTER)
+            self.draw_data_labels()
+            self.update_mode()
+            self.draw_text(False)
             vf_window.destroy()
 
         vf_canvas.bind("<Button-1>", on_mouse_down)

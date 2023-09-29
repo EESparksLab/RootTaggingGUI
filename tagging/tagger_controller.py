@@ -53,10 +53,10 @@ class Tagger_Controller(object):
         self.model = model
         self.view = view
         self.root.bind("<Button 1>", self.on_click_left) # Bind Left Mouse Button
-        self.root.bind("<r>", self.reset_data)
+        self.root.bind("<Control-r>", self.reset_data)
         self.root.bind("<Return>", self.switch_mode)
-        self.root.bind("<l>", self.rotate_image_call)
-        self.root.bind("<v>",self.view_finder_call)
+        self.root.bind("<Control-l>", self.rotate_image_call)
+        self.root.bind("<Control-v>",self.view_finder_call)
         self.pixel_data_list = []
         self.mode = STEP_LIST[0]
         self.view.mode_text = self.mode

@@ -45,9 +45,9 @@ WinLauncher.bat
 ```
 ### Press "start" to get to the tagging window
 Features & keybinds of the tagging window include:
-* "R" key resets all markers & entry boxes
-* "L" key will redraw the image, rotated 90 degrees
-* "V" key will open the viewfinder
+* "Control+R" key resets all markers & entry boxes
+* "Control+L" key will redraw the image, rotated 90 degrees
+* "Control+V" key will open the viewfinder
 
 > Using the Viewfinder
 note: you may need to expand the viewfinder window to see the full image
