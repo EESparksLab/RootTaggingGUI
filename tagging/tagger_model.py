@@ -50,22 +50,17 @@ class Tagger_Model():
 
 
     def sort_paths(self):
-        temp = []
-        for file_name in self.image_paths:
-            split_name = file_name #
-
-        #    curr_index = ''.join(x for x in split_name[3] if x.isdigit()) # Analyzes the filename after the first number
-        #    a_or_b = re.search("[AB]", split_name[3]).group()
-        #    temp.append([int(curr_index), a_or_b, file_name])
-
-       # temp.sort(key = lambda x: x[0])
-       # for i in range(len(temp)-1):
-       #     if i % 2 == 0 and "B" in temp[i]:
-         #       temp2 = temp[i]
-       #         temp[i] = temp[i+1]
-        #        temp[i+1] = temp2
-     #   self.image_paths *= 0 # Clear the plant_directories list
-     #   self.image_paths = [ paths[2] for paths in temp ] # Dirs[1] is the sorted pathname, I no longer need the index
+        def sort_key(filename):
+            match = re.match(r'stalk_images/(\d+)_(\d+)(\w+)_(\d+).jpeg', filename)
+            if match:
+                plot_num = int(match.group(1))
+                id_sample = match.group(2)
+                id_num = int(re.search(r'\d+', id_sample).group())
+                return plot_num, id_num
+            else:
+                print("patterns not found: File sort is not working")
+                return float('inf'), float('inf')
+        self.image_paths = sorted(self.image_paths, key=sort_key)
 
 
     """

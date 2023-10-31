@@ -273,7 +273,7 @@ class Tagger_View(Frame):
         self.root_width_text = self.canvas.create_text(x+x3, y-y1, fill = "lawn green", font = "Times 20 bold", text = "Root Width")
         self.stalk_width_text = self.canvas.create_text(x+x2, y-y2, fill = "lawn green", font = "Times 20 bold", text = "Stalk Width")
         self.triangle_text = self.canvas.create_text(x+x3, y-y2, fill = "lawn green", font = "Times 20 bold", text = "Triangles")
-        self.tringle_text = self.canvas.create_text(x+500, y-500, fill = "lawn green", font = "Times 20 bold", text = self.image_list[self.count])
+        self.filename_text = self.canvas.create_text(x+500, y-500, fill = "lawn green", font = "Times 20 bold", text = self.image_list[self.count])
 
 
 
